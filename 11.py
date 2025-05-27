@@ -1,21 +1,33 @@
 def solution(height):
   l,r = 0, len(height)-1
   max_area = 0
-
+  
   while l < r:
-    width = r-l
-    h = min(height[r], height[l])
-    area = width * h
-    max_area = max(max_area, area)
+      max_area = max(max_area, min(height[l], height[r]) * (r - l))
+      if height[l] < height[r]:
+          l += 1
+          else:
+              r -= 1
 
-    # Move each pointer
-    if height[l] < height[r]:
-      l = l +1
+              return max_area
 
-    # move right pointer to left
-    else:
-      r = r-1
-  return max_area
+# Solution2:
 
-heights = [1,8,6,2,5,4,8,9,7]
-solution(heights)
+if not height:
+    return 0
+
+    max_area = 0
+    left = 0
+    right = len(height) - 1
+
+    while left < right:
+        width = right - left
+        h = min(height[left], height[right])
+        max_area = max(max_area, width * h)
+
+        if height[left] < height[right]:
+            left += 1
+            else:
+                right -= 1
+
+                return max_area
