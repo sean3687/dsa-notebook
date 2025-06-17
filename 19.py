@@ -23,18 +23,20 @@ class Solution:
         
         # return dummy.next
 
-        dummy = ListNode()
-        prev = dummy
-        current = head
+        dummy = ListNode(0, head)
+        left = dummy
+        right = head
 
-        # set the current node at where item should replaced
         while n > 0:
-            current = current.next
+            right = right.next
             n -= 1
-        
-        #
-        while current:
-            prev = 
+
+        while right:
+            left = left.next
+            right = right.next
+
+        left.next = left.next.next
+        return dummy.next
 
 
         
